@@ -1,0 +1,6 @@
+<component name="LanguageInjectionConfiguration">
+    <injection language="JavaScript" injector-id="xml">
+        <display-name>Alpine directives</display-name>
+        <place><![CDATA[xmlAttribute().withLocalName(string().startsWith("x-"))]]></place>
+    </injection>
+</component>

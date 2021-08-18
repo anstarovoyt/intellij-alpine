@@ -1,11 +1,14 @@
 <idea-plugin>
     <id>org.jetbrains.plugins.template</id>
-    <depends>JavaScript</depends>
     <name>Alpine IJ</name>
     <vendor>JetBrains</vendor>
     <depends>com.intellij.modules.platform</depends>
-
+    <depends>org.intellij.intelliLang</depends>
+    <depends>JavaScript</depends>
     <extensions defaultExtensionNs="com.intellij">
         <javascript.webTypes source="web-types/alpine.json" enableByDefault="true"/>
+    </extensions>
+    <extensions defaultExtensionNs="org.intellij.intelliLang">
+        <injectionConfig config="injections/injection_directives.xml"/>
     </extensions>
 </idea-plugin>
