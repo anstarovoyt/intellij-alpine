@@ -6,108 +6,211 @@
     "html": {
       "attributes": [
         {
-          "name": "Alpine directives",
-          "description": "Directives are special attributes with the `x-` prefix",
+          "name": "Simple Alpine x-attributes",
           "virtual": true,
           "pattern": {
-            "items": "/html/x-directives",
-            "template": [
-              "x-",
-              "#item:Alpine directives",
+            "items": "/html/x-simple-attributes"
+          }
+        },
+        {
+          "name": "Alpine x-bind attribute",
+          "virtual": true,
+          "pattern": {
+            "items": [
               {
-                "delegate": "argument",
+                "path": "/html/attributes",
+                "includeVirtual": false
+              }
+            ],
+            "template": [
+              "x-bind:",
+              "#...",
+              "#item"
+            ]
+          }
+        },
+        {
+          "name": "Alpine x-on attribute",
+          "virtual": true,
+          "pattern": {
+            "items": [
+              {
+                "path": "/html/events",
+                "includeVirtual": false
+              }
+            ],
+            "template": [
+              "x-on:",
+              "#...",
+              "#item",
+              {
+                "items": "modifiers",
                 "template": [
-                  ":",
-                  "#...",
-                  "#item:argument"
+                  ".",
+                  "#item:modifier"
                 ],
                 "required": false,
-                "proximity": 5
+                "repeat": true
               }
             ]
           }
         }
       ],
-      "x-directives": [
+      "x-simple-attributes": [
         {
-          "virtual": true,
-          "name": "data"
+          "name": "x-data"
         },
         {
-          "virtual": true,
-          "name": "init"
+          "name": "x-init"
         },
         {
-          "virtual": true,
-          "name": "show"
+          "name": "x-show"
         },
         {
-          "virtual": true,
-          "name": "bind",
-          "argument": {
-            "name": "html attribute",
-            "pattern": {
-              "items": [
-                {
-                  "path": "/html/attributes",
-                  "includeVirtual": false
-                }
-              ]
+          "name": "x-on"
+        },
+        {
+          "name": "x-text"
+        },
+        {
+          "name": "x-html"
+        },
+        {
+          "name": "x-model"
+        },
+        {
+          "name": "x-for"
+        },
+        {
+          "name": "x-transition",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "name": "x-effect"
+        },
+        {
+          "name": "x-ignore",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "name": "x-ref"
+        },
+        {
+          "name": "x-cloak",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "name": "x-if"
+        }
+      ],
+      "events": [
+        {
+          "name": "Mouse button event modifiers",
+          "extension": true,
+          "pattern": {
+            "or": [
+              "click",
+              "dblclick",
+              "mousedown",
+              "mouseup"
+            ]
+          },
+          "modifiers": [
+            {
+              "name": "left",
+              "description": "Only trigger handler for left button mouse events."
+            },
+            {
+              "name": "right",
+              "description": "Only trigger handler for right button mouse events."
+            },
+            {
+              "name": "middle",
+              "description": "Only trigger handler for middle button mouse events."
             }
-          }
+          ]
         },
         {
-          "virtual": true,
-          "name": "on"
+          "name": "Key event modifiers",
+          "extension": true,
+          "pattern": {
+            "or": [
+              "keydown",
+              "keypress",
+              "keyup"
+            ]
+          },
+          "modifiers": [
+            {
+              "name": "Key alias",
+              "pattern": {
+                "or": [
+                  "enter",
+                  "tab",
+                  "delete",
+                  "esc",
+                  "space",
+                  "up",
+                  "down",
+                  "left",
+                  "right"
+                ]
+              }
+            }
+          ]
         },
         {
-          "virtual": true,
-          "name": "text"
-        },
-        {
-          "virtual": true,
-          "name": "html"
-        },
-        {
-          "virtual": true,
-          "name": "model"
-        },
-        {
-          "virtual": true,
-          "name": "for"
-        },
-        {
-          "virtual": true,
-          "name": "transition",
-          "attribute-value": {
-            "required": false
-          }
-        },
-        {
-          "virtual": true,
-          "name": "effect"
-        },
-        {
-          "virtual": true,
-          "name": "ignore",
-          "attribute-value": {
-            "required": false
-          }
-        },
-        {
-          "virtual": true,
-          "name": "ref"
-        },
-        {
-          "virtual": true,
-          "name": "cloak",
-          "attribute-value": {
-            "required": false
-          }
-        },
-        {
-          "virtual": true,
-          "name": "if"
+          "name": "System event modifiers",
+          "extension": true,
+          "pattern": {
+            "or": [
+              "keydown",
+              "keypress",
+              "keyup",
+              "click",
+              "contextmenu",
+              "dblclick",
+              "mousedown",
+              "mouseenter",
+              "mouseleave",
+              "mousemove",
+              "mouseout",
+              "mouseover",
+              "mouseup",
+              "show",
+              "drag",
+              "dragend",
+              "dragenter",
+              "dragleave",
+              "dragover",
+              "dragstart",
+              "drop"
+            ]
+          },
+          "modifiers": [
+            {
+              "name": "System modifier key",
+              "description": "Triggers mouse or keyboard event listeners only when the modifier key is pressed.",
+              "pattern": {
+                "or": [
+                  "ctrl",
+                  "alt",
+                  "shift",
+                  "meta"
+                ]
+              }
+            },
+            {
+              "name": "exact",
+              "description": "Allows control of the exact combination of system modifiers needed to trigger an event."
+            }
+          ]
         }
       ]
     }
