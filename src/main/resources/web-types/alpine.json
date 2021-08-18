@@ -1,0 +1,115 @@
+{
+  "$schema": "./schema.json",
+  "name": "Alpine",
+  "version": "1.0.0",
+  "contributions": {
+    "html": {
+      "attributes": [
+        {
+          "name": "Alpine directives",
+          "description": "Directives are special attributes with the `x-` prefix",
+          "virtual": true,
+          "pattern": {
+            "items": "/html/x-directives",
+            "template": [
+              "x-",
+              "#item:Alpine directives",
+              {
+                "delegate": "argument",
+                "template": [
+                  ":",
+                  "#...",
+                  "#item:argument"
+                ],
+                "required": false,
+                "proximity": 5
+              }
+            ]
+          }
+        }
+      ],
+      "x-directives": [
+        {
+          "virtual": true,
+          "name": "data"
+        },
+        {
+          "virtual": true,
+          "name": "init"
+        },
+        {
+          "virtual": true,
+          "name": "show"
+        },
+        {
+          "virtual": true,
+          "name": "bind",
+          "argument": {
+            "name": "html attribute",
+            "pattern": {
+              "items": [
+                {
+                  "path": "/html/attributes",
+                  "includeVirtual": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "virtual": true,
+          "name": "on"
+        },
+        {
+          "virtual": true,
+          "name": "text"
+        },
+        {
+          "virtual": true,
+          "name": "html"
+        },
+        {
+          "virtual": true,
+          "name": "model"
+        },
+        {
+          "virtual": true,
+          "name": "for"
+        },
+        {
+          "virtual": true,
+          "name": "transition",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "virtual": true,
+          "name": "effect"
+        },
+        {
+          "virtual": true,
+          "name": "ignore",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "virtual": true,
+          "name": "ref"
+        },
+        {
+          "virtual": true,
+          "name": "cloak",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "virtual": true,
+          "name": "if"
+        }
+      ]
+    }
+  }
+}

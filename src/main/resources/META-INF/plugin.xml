@@ -1,19 +1,11 @@
 <idea-plugin>
-    <id>com.github.anstarovoyt.intellijalpine</id>
-    <name>intellij-alpine</name>
-    <vendor>anstarovoyt</vendor>
-
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <id>org.jetbrains.plugins.template</id>
+    <depends>JavaScript</depends>
+    <name>Alpine IJ</name>
+    <vendor>JetBrains</vendor>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.anstarovoyt.intellijalpine.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.anstarovoyt.intellijalpine.services.MyProjectService"/>
+        <javascript.webTypes source="web-types/alpine.json" enableByDefault="true"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.anstarovoyt.intellijalpine.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
