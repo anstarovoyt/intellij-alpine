@@ -6,11 +6,69 @@
     "html": {
       "attributes": [
         {
-          "name": "Simple Alpine x-attributes",
           "virtual": true,
-          "pattern": {
-            "items": "/html/x-simple-attributes"
+          "name": "x-data"
+        },
+        {
+          "virtual": true,
+          "name": "x-init"
+        },
+        {
+          "virtual": true,
+          "name": "x-show"
+        },
+        {
+          "virtual": true,
+          "name": "x-on"
+        },
+        {
+          "virtual": true,
+          "name": "x-text"
+        },
+        {
+          "virtual": true,
+          "name": "x-html"
+        },
+        {
+          "virtual": true,
+          "name": "x-model"
+        },
+        {
+          "virtual": true,
+          "name": "x-for"
+        },
+        {
+          "virtual": true,
+          "name": "x-transition",
+          "attribute-value": {
+            "required": false
           }
+        },
+        {
+          "virtual": true,
+          "name": "x-effect"
+        },
+        {
+          "virtual": true,
+          "name": "x-ignore",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "virtual": true,
+          "name": "x-ref"
+        },
+        {
+          "virtual": true,
+          "name": "x-cloak",
+          "attribute-value": {
+            "required": false
+          }
+        },
+        {
+          "virtual": true,
+          "name": "x-if"
         },
         {
           "name": "Alpine x-bind attribute",
@@ -25,6 +83,23 @@
             "template": [
               "x-bind:",
               "#...",
+              "#item"
+            ]
+          }
+        },
+        {
+          "name": "Alpine x-bind shorthand",
+          "virtual": true,
+          "pattern": {
+            "items": [
+              {
+                "path": "/html/attributes",
+                "includeVirtual": false
+              }
+            ],
+            "template": [
+              ":",
+              "$...",
               "#item"
             ]
           }
@@ -54,59 +129,32 @@
               }
             ]
           }
-        }
-      ],
-      "x-simple-attributes": [
-        {
-          "name": "x-data"
         },
         {
-          "name": "x-init"
-        },
-        {
-          "name": "x-show"
-        },
-        {
-          "name": "x-on"
-        },
-        {
-          "name": "x-text"
-        },
-        {
-          "name": "x-html"
-        },
-        {
-          "name": "x-model"
-        },
-        {
-          "name": "x-for"
-        },
-        {
-          "name": "x-transition",
-          "attribute-value": {
-            "required": false
+          "name": "Alpine x-on shorthand",
+          "virtual": true,
+          "pattern": {
+            "items": [
+              {
+                "path": "/html/events",
+                "includeVirtual": false
+              }
+            ],
+            "template": [
+              "@",
+              "$...",
+              "#item",
+              {
+                "items": "modifiers",
+                "template": [
+                  ".",
+                  "#item:modifier"
+                ],
+                "required": false,
+                "repeat": true
+              }
+            ]
           }
-        },
-        {
-          "name": "x-effect"
-        },
-        {
-          "name": "x-ignore",
-          "attribute-value": {
-            "required": false
-          }
-        },
-        {
-          "name": "x-ref"
-        },
-        {
-          "name": "x-cloak",
-          "attribute-value": {
-            "required": false
-          }
-        },
-        {
-          "name": "x-if"
         }
       ],
       "events": [
